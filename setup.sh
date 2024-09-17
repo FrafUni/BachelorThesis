@@ -7,28 +7,21 @@ if [ "$(id -u)" -ne "0" ]; then
 fi
 
 echo "Aggiornamento pacchetti..."
-apt update -y
-apt upgrade -y
-apt install -y curl git
+sudo apt install -y curl
 
 echo "Creazione della struttura del progetto..."
-mkdir -p emsdk output public source temp
+mkdir -m 777 emsdk output public source temp
 
 echo "Installazione di Node.js e npm..."
-cd source || exit
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+cd source 
+npm init -y
 apt install -y nodejs
+npm install express
+# npm install fs child_process path
 
 # Verifica l'installazione di Node.js e npm
 node --version
 npm --version
-
-echo "Inizializzazione del progetto Node.js e installazione di Express..."
-npm init -y
-npm install express
-
-# Installa altre dipendenze per la gestione di filesystem e processi
-npm install fs child_process path
 
 # Clona e configura Emscripten SDK (emsdk)
 echo "Installazione e configurazione di Emscripten SDK..."
@@ -42,7 +35,7 @@ source ./emsdk_env.sh
 # Verifica l'installazione di Emscripten
 emcc --version
 
-cd ../..
+cd ..
 
 # Script completato
 echo "Installazione completata. Avvio server Node.js."
