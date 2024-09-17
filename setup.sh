@@ -45,4 +45,6 @@ emcc --version
 cd ../..
 
 # Script completato
-echo "Installazione completata. Ora puoi avviare il server Node.js."
+echo "Installazione completata. Avvio server Node.js."
+cd source
+node server.js
