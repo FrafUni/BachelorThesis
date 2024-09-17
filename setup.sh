@@ -11,6 +11,7 @@ sudo apt install -y curl
 
 echo "Creazione della struttura del progetto..."
 mkdir -m 777 emsdk output public source temp
+touch public/index.html public/style.css public/script.js source/server.js
 
 echo "Installazione di Node.js e npm..."
 cd source 
