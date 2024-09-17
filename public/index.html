@@ -43,22 +43,8 @@
                     throw new Error('Errore nella compilazione');
                 }
 
-                const { jsFile, wasmFile } = await response.json();
-                
-                // Carica il file JS e WASM e esegui il codice
-                const script = document.createElement('script');
-                script.src = jsFile;
-                document.body.appendChild(script);
-
-                // Esegui il file .wasm quando il file JS è caricato
-                script.onload = () => {
-                    // Configura il WebAssembly e chiama il codice compilato
-                    Module['onRuntimeInitialized'] = () => {
-                        // Chiama la funzione principale del programma compilato
-                        const result = Module._main();
-                        outputDiv.textContent = `Output: ${result}`;
-                    };
-                };
+                const result = await response.text();
+                outputDiv.innerHTML = result;
             } catch (error) {
                 outputDiv.textContent = 'Errore: ' + error.message;
             }
@@ -66,4 +52,3 @@
     </script>
 </body>
 </html>
-
