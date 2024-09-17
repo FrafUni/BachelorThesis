@@ -5,4 +5,4 @@ Compiler of C code on a browser
 Attenzione! Questo file batch aggiornerà tutte le risorse dell'ambiente
 Una volta clonato il git su una piattaforma Linux, eseguire i comandi:
 chmod +x setup.sh
-./setup.sh
+sudo ./setup.sh
