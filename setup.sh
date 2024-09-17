@@ -1,11 +1,4 @@
 #!/bin/bash
-
-# Controllo sui privilegi di superutente
-if [ "$(id -u)" -ne "0" ]; then
-  echo "Questo script deve essere eseguito come root. Esegui con 'sudo'."
-  exit 1
-fi
-
 echo "Aggiornamento pacchetti..."
 sudo apt install -y curl
 
