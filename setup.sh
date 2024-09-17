@@ -25,9 +25,9 @@ npm --version
 
 # Clona e configura Emscripten SDK (emsdk)
 echo "Installazione e configurazione di Emscripten SDK..."
-cd ../emsdk || exit
+cd ../emsdk
 git clone https://github.com/emscripten-core/emsdk.git
-cd emsdk || exit
+cd emsdk 
 ./emsdk install latest
 ./emsdk activate latest
 source ./emsdk_env.sh
@@ -35,9 +35,7 @@ source ./emsdk_env.sh
 # Verifica l'installazione di Emscripten
 emcc --version
 
-cd ..
-
 # Script completato
 echo "Installazione completata. Avvio server Node.js."
-cd source
+cd ../source
 node server.js
