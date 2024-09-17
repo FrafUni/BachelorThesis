@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Assicurati di avere i privilegi di superutente
+# Controllo sui privilegi di superutente
 if [ "$(id -u)" -ne "0" ]; then
   echo "Questo script deve essere eseguito come root. Esegui con 'sudo'."
   exit 1
@@ -23,7 +23,6 @@ apt install -y nodejs
 node --version
 npm --version
 
-# Inizializza il progetto Node.js e installa Express
 echo "Inizializzazione del progetto Node.js e installazione di Express..."
 npm init -y
 npm install express
@@ -47,4 +46,3 @@ cd ../..
 
 # Script completato
 echo "Installazione completata. Ora puoi avviare il server Node.js."
-
