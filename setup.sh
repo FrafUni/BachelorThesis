@@ -16,8 +16,8 @@ npm init -y
 npm install express  
 
 # Attivazione Emscripten  
-./emsdk activate latest  
-source ./emsdk_env.sh  
+./emsdk/emsdk activate latest  
+source ./emsdk/emsdk_env.sh  
 
 # Avvio server  
 node source/server.js
