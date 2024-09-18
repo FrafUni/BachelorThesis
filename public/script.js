@@ -9,13 +9,13 @@ document.getElementById('compileBtn').addEventListener('click', async () => {
     });
 
     const outputDiv = document.getElementById('output');
-    outputDiv.innerText = ''; // Pulisce l'output precedente
+    outputDiv.innerText = ''; 
 
     if (response.ok) {
         const message = await response.text();
-        outputDiv.innerText = message; // Mostra l'output dell'esecuzione
+        outputDiv.innerText = message; 
     } else {
         const errorText = await response.text();
-        outputDiv.innerText = `Errore: ${errorText}`; // Mostra l'errore se presente
+        outputDiv.innerText = `Errore: ${errorText}`;
     }
 });
