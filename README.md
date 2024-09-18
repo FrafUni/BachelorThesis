@@ -13,8 +13,9 @@ touch public/index.html public/style.css public/script.js source/server.js
 ## Installazione Node JS
 è importante riavviare il terminale dopo aver eseguito il primo comando:  
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash  
-// Riavviare terminale  
+exit  
 
+// Terminale riavviato  
 nvm install 20	 
 node -v  
 npm -v   
