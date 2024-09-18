@@ -3,6 +3,8 @@ Compiler of C code on a browser
 
 # Installazione tramite setup.sh
 è possibile eseguire il file setup.sh per configurare l'ambiente di sviluppo, altrimenti proceedere manualmente seguendo questo file  
+
+# Comandi per eseguire il setup automatico  
 chmod +x setup.sh  
 ./setup.sh  
 
