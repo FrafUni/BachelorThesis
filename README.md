@@ -5,8 +5,9 @@ Compiler of C code on a browser
 è possibile eseguire il file setup.sh per configurare l'ambiente di sviluppo, altrimenti proceedere manualmente seguendo questo file  
 
 # Comandi per eseguire il setup automatico  
+ATTENZIONE! è importante eseguire il file di setup con source  
 chmod +x setup.sh  
-./setup.sh  
+source ./setup.sh  
 
 
 ## Installazione Node JS
