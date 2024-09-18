@@ -1,6 +1,12 @@
 # BachelorThesis
 Compiler of C code on a browser
 
+# Installazione tramite setup.sh
+è possibile eseguire il file setup.sh per configurare l'ambiente di sviluppo, altrimenti proceedere manualmente seguendo questo file  
+chmod +x setup.sh  
+./setup.sh  
+
+
 ## Installazione Node JS
 è importante riavviare il terminale dopo aver eseguito il primo comando:  
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash  
