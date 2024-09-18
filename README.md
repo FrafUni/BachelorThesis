@@ -19,5 +19,5 @@ cd emsdk
 source ./emsdk_env.sh
 
 # installazione Express e inizializzazoine progetto Node JS
-npm init -y
+npm init -y  
 npm install express
