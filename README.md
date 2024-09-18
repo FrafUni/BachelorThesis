@@ -8,6 +8,7 @@ Una volta clonato il git è necessario installare tutte le dipendenze necessarie
 è importante riavviare il terminale dopo aver eseguito il primo comando:  
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash  
 // Riavviare terminale  
+
 nvm install 20	 
 node -v  
 npm -v   
