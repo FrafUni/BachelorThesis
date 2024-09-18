@@ -25,6 +25,7 @@ cd emsdk
 ./emsdk install latest  
 ./emsdk activate latest  
 source ./emsdk_env.sh
+cd ..
 
 ## Installazione Express e inizializzazoine progetto Node JS
 npm init -y  
