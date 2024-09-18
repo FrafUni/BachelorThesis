@@ -2,7 +2,8 @@
 Compiler of C code on a browser
 
 ## Installazione
-Una volta clonato il git è necessario installare tutte le dipendenze necessarie eseguendo i seguenti comandi:
+ATTENZIONE!  
+Non clonare questo git altrimenti l'installazione di Emscripten non andrà a buon fine
 
 ## Installazione Node JS
 è importante riavviare il terminale dopo aver eseguito il primo comando:  
