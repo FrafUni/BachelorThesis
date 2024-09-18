@@ -1,54 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C Compiler with Emscripten</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #output {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-            white-space: pre-wrap;
-        }
-    </style>
+    <title>Compilatore C in WebAssembly</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Compilatore C con Emscripten</h1>
-    <textarea id="code" rows="10" cols="50" placeholder="Inserisci codice C qui..."></textarea><br>
-    <button onclick="compileCode()">Compila e Esegui</button>
+    <h1>Compilatore C in WebAssembly</h1>
+    <textarea id="code" placeholder="Scrivi qui il tuo codice C..."></textarea>
+    <button id="compileBtn">Compila e Esegui</button>
     <div id="output"></div>
 
-    <script>
-        async function compileCode() {
-            const code = document.getElementById('code').value;
-            const outputDiv = document.getElementById('output');
-            outputDiv.textContent = 'Compilazione in corso...';
-
-            try {
-                const response = await fetch('/compile', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ code }),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Errore nella compilazione');
-                }
-
-                const result = await response.text();
-                outputDiv.innerHTML = result;
-            } catch (error) {
-                outputDiv.textContent = 'Errore: ' + error.message;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
