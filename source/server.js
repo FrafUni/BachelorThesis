@@ -1,59 +1,44 @@
 const express = require('express');
 const { exec } = require('child_process');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware per gestire i file statici
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
 app.use(express.json());
 
-// Percorsi per le cartelle "output" e "temp" a livello superiore rispetto a "source"
-const outputDir = path.join(__dirname, '../output');
-const tempDir = path.join(__dirname, '../temp');
-
-// Funzione per creare le cartelle "output" e "temp" se non esistono
-if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir);
-}
-if (!fs.existsSync(tempDir)) {
-    fs.mkdirSync(tempDir);
-}
-
+// Endpoint per compilare il codice C
 app.post('/compile', (req, res) => {
-    const { code } = req.body;
+    const code = req.body.code;
+    const cFilePath = path.join(__dirname, 'temp', 'temp.c');
+    const jsFilePath = path.join(__dirname, 'temp', 'temp.js');
 
-    // Salva il codice C in un file temporaneo nella cartella "temp"
-    const codeFilePath = path.join(tempDir, 'temp.c');
-    fs.writeFileSync(codeFilePath, code);
+    // Salva il codice C in un file temporaneo
+    fs.writeFileSync(cFilePath, code);
 
-    // Percorsi per i file di output nella cartella "output"
-    const jsOutputPath = path.join(outputDir, 'a.out.js');
-    const wasmOutputPath = path.join(outputDir, 'a.out.wasm');
-
-    // Comando per compilare il codice C con Emscripten
-    const command = `emcc ${codeFilePath} -o ${jsOutputPath} -s WASM=1 -s EXPORTED_FUNCTIONS="['_main']" -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]'`;
-
-    exec(command, (error, stdout, stderr) => {
+    // Esegui emcc per compilare il codice C in WebAssembly
+    exec(`emcc ${cFilePath} -o ${jsFilePath} -s WASM=1 -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']"`, (error, stdout, stderr) => {
         if (error) {
-            return res.status(500).send('Errore nella compilazione: ' + stderr);
+            console.error(`Errore di compilazione: ${stderr}`);
+            return res.status(500).send(`Errore di compilazione: ${stderr}`);
         }
 
-        // Esegui il file JS generato e cattura l'output
-        const runCommand = `node ${jsOutputPath}`;
-        exec(runCommand, (runError, runStdout, runStderr) => {
-            if (runError) {
-                return res.status(500).send('Errore durante l\'esecuzione: ' + runStderr);
+        // Esegui il file JavaScript generato per ottenere l'output
+        exec(`node ${jsFilePath}`, (execError, execStdout, execStderr) => {
+            if (execError) {
+                console.error(`Errore di esecuzione: ${execStderr}`);
+                return res.status(500).send(`Errore di esecuzione: ${execStderr}`);
             }
 
-            // Restituisci l'output dell'esecuzione
-            res.send(runStdout);
+            // Ritorna l'output dell'esecuzione
+            res.send(execStdout.trim());
         });
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server in ascolto su http://localhost:${port}`);
+// Avvia il server
+app.listen(PORT, () => {
+    console.log(`Server in ascolto su http://localhost:${PORT}`);
 });
