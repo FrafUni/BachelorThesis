@@ -32,4 +32,5 @@ npm init -y
 npm install express
 
 ## Avvio server 
+Una volta inseriti i file consultabili attraverso questo repository GitHub è possibile avviare il server e testare il progetto visitando la pagina http://localhost:3000  
 node /source/server.js
