@@ -14,7 +14,7 @@ node -v
 npm -v   
 
 ## Installazione Emscripten
-cd ../emsdk  
+cd emsdk  
 git clone https://github.com/emscripten-core/emsdk.git  
 cd emsdk  
 ./emsdk install latest  
