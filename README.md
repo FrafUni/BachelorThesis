@@ -8,7 +8,7 @@ Non utilizzare sudo per queste installazioni e per la creazione di file o cartel
 
 ## Inserimento cartelle e file necessari 
 mkdir -m 777 emsdk output public source temp  
-touch /public/index.html /public/style.css /public/script.js /source/server.js
+touch public/index.html public/style.css public/script.js source/server.js
 
 ## Installazione Node JS
 è importante riavviare il terminale dopo aver eseguito il primo comando:  
