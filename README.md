@@ -10,7 +10,7 @@ nvm install 20
 node -v  
 npm -v   
 
-# installazione Emscripten
+# Installazione Emscripten
 cd ../emsdk  
 git clone https://github.com/emscripten-core/emsdk.git  
 cd emsdk  
@@ -18,6 +18,9 @@ cd emsdk
 ./emsdk activate latest  
 source ./emsdk_env.sh
 
-# installazione Express e inizializzazoine progetto Node JS
+# Installazione Express e inizializzazoine progetto Node JS
 npm init -y  
 npm install express
+
+# Avvio server 
+node /source/server.js
