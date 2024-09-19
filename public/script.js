@@ -15,9 +15,6 @@ document.getElementById('compileBtn').addEventListener('click', () => {
         return response.json();
     })
     .then(data => {
-     //   const outputDiv = document.getElementById('output');
-     //   outputDiv.innerHTML = ''; 
-
         const script = document.createElement('script');
         script.src = data.path;
         script.onload = () => {
@@ -27,10 +24,9 @@ document.getElementById('compileBtn').addEventListener('click', () => {
                 };
             });
         };
-      //  document.body.appendChild(script);
-    
+        document.body.appendChild(script); 
     })
     .catch(error => {
-//        document.getElementById('output').innerText = error.message;
+        console.error('Error:', error.message);
     });
 });
