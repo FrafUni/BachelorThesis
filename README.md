@@ -30,6 +30,7 @@ cd ..
 ## Installazione Express e inizializzazoine progetto Node JS
 npm init -y  
 npm install express
+npm install express body-parser
 
 ## Avvio server 
 Una volta inseriti i file consultabili attraverso questo repository GitHub è possibile avviare il server e testare il progetto visitando la pagina http://localhost:3000  
