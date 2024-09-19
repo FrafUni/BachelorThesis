@@ -15,8 +15,8 @@ document.getElementById('compileBtn').addEventListener('click', () => {
         return response.json();
     })
     .then(data => {
-        const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = ''; 
+     //   const outputDiv = document.getElementById('output');
+     //   outputDiv.innerHTML = ''; 
 
         const script = document.createElement('script');
         script.src = data.path;
@@ -27,9 +27,10 @@ document.getElementById('compileBtn').addEventListener('click', () => {
                 };
             });
         };
-        document.body.appendChild(script);
+      //  document.body.appendChild(script);
+    
     })
     .catch(error => {
-        document.getElementById('output').innerText = error.message;
+//        document.getElementById('output').innerText = error.message;
     });
 });
