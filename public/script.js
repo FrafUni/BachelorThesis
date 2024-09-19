@@ -16,16 +16,14 @@ document.getElementById('compileBtn').addEventListener('click', () => {
     })
     .then(data => {
         const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = ''; // Pulisci il div precedente
+        outputDiv.innerHTML = ''; 
 
-        // Carica il file JavaScript generato
         const script = document.createElement('script');
         script.src = data.path;
         script.onload = () => {
             createModule().then(Module => {
-                // Esegui il codice compilato
                 Module.onRuntimeInitialized = () => {
-                    Module._main(); // Chiama main
+                    Module._main(); 
                 };
             });
         };
