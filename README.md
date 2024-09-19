@@ -1,5 +1,5 @@
 # BachelorThesis
-Compiler of C code on a browser
+Compiler of C code on a browser  
 L'output è visualizzabile nella Console del browser
 
 ## Installazione tramite setup.sh
