@@ -1,31 +1,33 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { exec } = require('child_process');
-const path = require('path');
-const fs = require('fs');
+document.getElementById('compileBtn').addEventListener('click', () => {
+    const code = document.getElementById('code').value;
 
-const app = express();
-const PORT = 3000;
-
-app.use(bodyParser.text());
-app.use(express.static(path.join(__dirname, '../public')));
-
-app.post('/compile', (req, res) => {
-    const code = req.body;
-
-    // Scrivi il codice C in un file
-    fs.writeFileSync('../temp/temp.c', code);
-
-    // Comando per compilare con Emscripten
-    exec('emcc ../temp/temp.c -o public/output.js -s WASM=1 -s MODULARIZE=1 -s EXPORT_NAME="createModule" -O3', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${error.message}`);
-            return res.status(500).json({ error: stderr || 'Compilazione fallita.' });
+    fetch('/compile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain',
+        },
+        body: code,
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error); });
         }
-        res.json({ path: '/output.js' });
+        return response.json();
+    })
+    .then(data => {
+        // Carica il file di output compilato
+        const script = document.createElement('script');
+        script.src = data.path;
+        script.onload = () => {
+            createModule().then(Module => {
+                Module.onRuntimeInitialized = () => {
+                    Module._main(); // Esegui il programma C compilato
+                };
+            });
+        };
+        document.body.appendChild(script); // Aggiungi lo script al DOM
+    })
+    .catch(error => {
+        console.error('Error:', error.message);
     });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
 });
