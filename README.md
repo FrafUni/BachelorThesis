@@ -1,5 +1,6 @@
 # BachelorThesis
 Compiler of C code on a browser
+L'output è visualizzabile nella Console del browser
 
 ## Installazione tramite setup.sh
 è possibile eseguire il file setup.sh per configurare l'ambiente di sviluppo, altrimenti proceedere manualmente seguendo questo file  
