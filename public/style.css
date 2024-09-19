@@ -1,56 +1,64 @@
+/* Stile generale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+    background-color: #f4f4f9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: #4CAF50;
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 textarea {
     width: 100%;
-    height: 200px;
-    border: 2px solid #4CAF50;
-    border-radius: 5px;
+    height: 250px;
     padding: 10px;
-    box-sizing: border-box;
     font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    resize: none;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+textarea::placeholder {
+    color: #aaa;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 20px;
     font-size: 16px;
-    transition: background-color 0.3s;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
-}
-
-#output {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    padding: 10px;
-    min-height: 100px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+    background-color: #218838;
 }
