@@ -15,6 +15,7 @@ git clone https://github.com/emscripten-core/emsdk.git
 cd source
 npm init -y   
 npm install express  
+npm install express body-parser
 cd ..
 
 # Attivazione Emscripten  
